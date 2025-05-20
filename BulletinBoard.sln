@@ -7,6 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BulletinBoard.Infrastructur
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BulletinBoard.Core", "BulletinBoard.Core\BulletinBoard.Core.csproj", "{13F3383C-41A9-4EB4-AC01-A2D569E2D01C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{79C68196-2357-403F-B3AE-3CFDC9B324EE}"
+	ProjectSection(SolutionItems) = preProject
+		InitDb.sql = InitDb.sql
+		StoredProcedures.sql = StoredProcedures.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
