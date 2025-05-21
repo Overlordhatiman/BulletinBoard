@@ -11,9 +11,9 @@ namespace BulletinBoard.Infrastructure.Repositories
     {
         private readonly string _connectionString;
 
-        public AdRepository(IConfiguration config)
+        public AdRepository(string conString)
         {
-            _connectionString = config.GetConnectionString("DefaultConnection") ?? "";
+            _connectionString = conString;
         }
 
         // Read Operations
