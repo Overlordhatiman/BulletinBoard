@@ -1,9 +1,13 @@
 ﻿using BulletinBoard.Core.Entities;
 using BulletinBoard.Core.Interfaces;
+using Microsoft.AspNetCore.Authentication.Google;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace BulletinBoard.Api.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class AdsController : ControllerBase
@@ -41,7 +45,11 @@ namespace BulletinBoard.Api.Controllers
         [HttpPost]
         public async Task<ActionResult<Ad>> PostAd(Ad ad)
         {
-            // Set default values
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userId))
+                return Unauthorized();
+
+            ad.UserId = userId;
             ad.CreatedDate = DateTime.UtcNow;
             ad.Status = true;
 

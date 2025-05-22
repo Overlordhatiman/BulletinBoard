@@ -1,0 +1,60 @@
+﻿@model BulletinBoard.Mvc.Models.AdCreateDto
+
+<h1>Create New Ad</h1>
+
+<form asp-action="Create">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="form-group">
+        <label asp-for="Title" class="control-label">Title
+            <input asp-for="Title" class="form-control" />
+        </label>
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Description" class="control-label">Description
+            <textarea asp-for="Description" class="form-control"></textarea>
+        </label>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CategoryId" class="control-label">Category
+        <select asp-for="CategoryId" asp-items="ViewBag.Categories" class="form-control">
+            <option value="">-- Select Category --</option>
+            </select>
+        </label>
+        <span asp-validation-for="CategoryId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="SubcategoryId" class="control-label">Subcategory
+        <select asp-for="SubcategoryId" class="form-control" id="subcategoryDropdown">
+            <option value="">-- Select Subcategory --</option>
+            </select>
+        </label>
+        <span asp-validation-for="SubcategoryId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+</form>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#CategoryId').change(function () {
+                var categoryId = $(this).val();
+                $.getJSON('/Ads/GetSubcategories', { categoryId: categoryId }, function (data) {
+                    var items = '<option value="">-- Select Subcategory --</option>';
+                    $.each(data, function (i, subcategory) {
+                        items += '<option value="' + subcategory.subcategoryId  + '">' + subcategory.subcategoryName  + '</option>';
+                    });
+                    $('#subcategoryDropdown').html(items);
+                });
+            });
+        });
+    </script>
+}

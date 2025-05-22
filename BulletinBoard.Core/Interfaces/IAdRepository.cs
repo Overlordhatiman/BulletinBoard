@@ -18,5 +18,7 @@ namespace BulletinBoard.Core.Interfaces
         public Task<int> CreateAsync(Ad ad);
         public Task UpdateAsync(Ad ad);
         public Task DeleteAsync(int id, string userId);
+
+        Task<IEnumerable<Category>> GetCategoriesWithSubcategoriesAsync();
     }
 }

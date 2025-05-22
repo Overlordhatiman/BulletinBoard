@@ -98,8 +98,7 @@ namespace BulletinBoard.Infrastructure.Repositories
                     ad.Title,
                     ad.Description,
                     ad.CategoryId,
-                    ad.SubcategoryId,
-                    ad.UserId
+                    ad.SubcategoryId
                 },
                 commandType: CommandType.StoredProcedure
             );
@@ -110,7 +109,7 @@ namespace BulletinBoard.Infrastructure.Repositories
             using var connection = new SqlConnection(_connectionString);
             await connection.ExecuteAsync(
                 "spAd_Delete",
-                new { Id = id, UserId = userId },
+                new { Id = id },
                 commandType: CommandType.StoredProcedure
             );
         }
