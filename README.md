@@ -15,8 +15,8 @@ Before running the project, ensure you have the following installed:
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/your-repo-url.git
-   cd your-project-folder
+   git clone https:/git@github.com:Overlordhatiman/BulletinBoard.git
+   cd BulletinBoard
 2. Setup the database:
 
     Open SQL Server Management Studio or any SQL client.
